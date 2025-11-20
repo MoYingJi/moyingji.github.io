@@ -89,3 +89,18 @@ $$ \pu{55.5 mmol/L} \ce{->[H2O]} \pu{1.0e-7 mol/L} $$
 </NSwitchCollapse>
 
 猜猜<nt text="这个">这是个<mt>东西</mt>就对了<br/>嗯...对</nt>是什么东西，其实<mt>只是段特殊的文字</mt>哦！
+
+<NSwitchCollapse>
+    <template #hide>
+        一些测试罢了
+    </template>
+
+<span style="font-size: 20px">
+
+<span lang="ja"><Ry rb="夜" rt="よる"/>の<Ry rb="帳" rt="とばり"/>の<Ry rb="中" rt="なか"/>で</span> /<span lang="zh-CN">「于夜色中」</span>
+
+<span lang="ja"><Ry rb="忍法帖" rt="にんぽうちょう"/>・<Ry rb="繚乱破魔" rt="りょうらんはま"/></span> /<span lang="zh-CN">「忍法帖•缭乱破魔」</span>
+
+</span>
+
+</NSwitchCollapse>

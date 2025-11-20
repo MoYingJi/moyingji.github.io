@@ -78,6 +78,12 @@ echo "Patch applied successfully."
 然后打开启动器，启动器可以正常打开
 每次启动器更新都需要重新执行这个操作
 
+## 让启动器获取到游戏信息
+
+新版本的启动器更新了个功能，可以在启动器中获取玩家信息
+
+在相同的 Prefix 中，这应该立即工作
+在不同的 Prefix 中，你应当软链接两个 Prefix 的 `C:\Users\$USER\AppData\Roaming\KR_G152` 文件夹
 
 ## 参考
 #69 - New Waves launcher does not work out of the box (workaround in thread)

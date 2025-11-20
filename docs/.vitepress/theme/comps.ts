@@ -25,8 +25,8 @@ import * as Naive from "naive-ui/es/components"
 import NTooltipText from "./components/naive/NTooltipText.vue";
 import MaskText from "./components/MaskText.vue";
 
-import Footnote from "./others/footnote/Footnote.vue";
-import FootnoteRef from "./others/footnote/FootnoteRef.vue";
+import Footnote from "./others/footnote-plus/Footnote.vue";
+import FootnoteRef from "./others/footnote-plus/FootnoteRef.vue";
 
 export const components = {
     "nt": NTooltipText,

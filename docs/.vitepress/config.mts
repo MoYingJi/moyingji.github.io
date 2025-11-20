@@ -2,8 +2,9 @@ import { DefaultTheme, defineConfig, UserConfig } from "vitepress"
 
 import * as MdExt from "./extensions/markdown/_script.ts"
 import { vitepressDemoPlugin } from "vitepress-demo-plugin"
-import markdownIns from "markdown-it-ins"
 import mathjax3 from "markdown-it-mathjax3"
+import mdIns from "markdown-it-ins"
+import mdFootnote from "markdown-it-footnote"
 
 // https://vitepress.dev/zh/reference/site-config
 const config: UserConfig<NoInfer<DefaultTheme.Config>> = {
@@ -85,13 +86,15 @@ const config: UserConfig<NoInfer<DefaultTheme.Config>> = {
         },
 
         config(md) {
+            md.use(mathjax3)
+            md.use(vitepressDemoPlugin)
+            md.use(mdIns)
+            md.use(mdFootnote)
+
             MdExt.config(md)
             md.set({
                 breaks: true,
             })
-            md.use(mathjax3)
-            md.use(vitepressDemoPlugin)
-            md.use(markdownIns)
         },
 
         container: {
@@ -123,6 +126,7 @@ const config: UserConfig<NoInfer<DefaultTheme.Config>> = {
             noExternal: [
                 "@nolebase/ui-asciinema",
                 "@nolebase/vitepress-plugin-enhanced-readabilities",
+                "@nolebase/vitepress-plugin-highlight-targeted-heading",
                 "@nolebase/ui",
 
                 "naive-ui", "date-fns", "vueuc"

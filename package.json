@@ -4,23 +4,26 @@
         "@nolebase/ui-asciinema": "^2.18.2",
         "@theojs/lumen": "^5.8.2",
         "asciinema-player": "^3.12.1",
+        "mitt": "^3.0.1",
         "ts-regex-builder": "^1.8.2"
     },
     "devDependencies": {
         "@css-render/vue3-ssr": "^0.15.14",
         "@nolebase/vitepress-plugin-enhanced-mark": "^2.18.2",
         "@nolebase/vitepress-plugin-enhanced-readabilities": "^2.18.2",
+        "@nolebase/vitepress-plugin-highlight-targeted-heading": "^2.18.2",
         "@nolebase/vitepress-plugin-page-properties": "^2.18.2",
         "@types/markdown-it": "^14.1.2",
         "@vicons/ionicons5": "^0.13.0",
+        "markdown-it-footnote": "^4.0.0",
         "markdown-it-ins": "^4.0.0",
         "markdown-it-mathjax3": "^4.3.2",
-        "naive-ui": "^2.43.1",
-        "sass": "^1.93.2",
-        "vite": "^7.1.12",
-        "vitepress": "2.0.0-alpha.12",
+        "naive-ui": "^2.43.2",
+        "sass": "^1.94.2",
+        "vite": "^7.2.4",
+        "vitepress": "2.0.0-alpha.13",
         "vitepress-demo-plugin": "^1.5.0",
-        "vue": "^3.5.22"
+        "vue": "^3.5.24"
     },
     "scripts": {
         "dev": "vitepress dev docs",

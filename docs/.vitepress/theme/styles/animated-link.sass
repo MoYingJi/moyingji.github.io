@@ -1,6 +1,6 @@
 // 来自 Linho1219，有修改
-// https://github.com/Linho1219/LinhoNotes/blob/main/.vitepress/theme/styles/animation.css
-// https://github.com/Linho1219/LinhoNotes/blob/main/.vitepress/theme/styles/fix.css
+// https://github.com/Linho1219/LinhoNotes/blob/52e08d37ba7c8980b9c638b12e127c8175c4408e/.vitepress/theme/styles/animation.css#L69-L98
+// https://github.com/Linho1219/LinhoNotes/blob/52e08d37ba7c8980b9c638b12e127c8175c4408e/.vitepress/theme/styles/fix.css#L120-L133
 
 .vp-doc .animated-link
     padding-bottom: 0.12em
@@ -14,6 +14,8 @@
     background-size: 0 100%
     transition: background-color 0.2s, box-shadow 0.2s, background-size 0.3s, opacity 0.2s
 
+    font-weight: inherit
+
     &:hover
         color: var(--vp-c-brand-1) !important
         background-color: var(--vp-c-brand-soft)
@@ -25,6 +27,7 @@
     &:active
         opacity: 0.6 !important
 
+    // 外链提示
     &::after
         content: ""
         width: 0.7em !important

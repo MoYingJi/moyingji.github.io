@@ -25,6 +25,9 @@ import * as Naive from "naive-ui/es/components"
 import NTooltipText from "./components/naive/NTooltipText.vue";
 import MaskText from "./components/MaskText.vue";
 
+import Footnote from "./others/footnote/Footnote.vue";
+import FootnoteRef from "./others/footnote/FootnoteRef.vue";
+
 export const components = {
     "nt": NTooltipText,
     "mt": MaskText,
@@ -39,4 +42,7 @@ export const components = {
     "NImage": Naive.NImage,
     "NSkeleton": Naive.NSkeleton,
     "NTooltip": Naive.NTooltip,
+
+    "Footnote": Footnote,
+    "FootnoteRef": FootnoteRef,
 } as Record<string, Component>

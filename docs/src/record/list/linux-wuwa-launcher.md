@@ -2,7 +2,7 @@
 
 在 Linux 上，鸣潮本体可以通过特殊手段运行，但启动器却不行，这让我们的游戏更新非常困难
 
-## 在 Wine 中安装并修复鸣潮启动器
+## 在 Wine 中安装并修复鸣潮启动器 [^1]
 
 正常在 Wine 中安装鸣潮启动器即可，此时启动器是无法打开的
 
@@ -80,11 +80,12 @@ echo "Patch applied successfully."
 
 ## 让启动器获取到游戏信息
 
-新版本的启动器更新了个功能，可以在启动器中获取玩家信息
+新版本的启动器更新了个功能，可以在启动器中获取玩家的游戏信息
 
 在相同的 Prefix 中，这应该立即工作
 在不同的 Prefix 中，你应当软链接两个 Prefix 的 `C:\Users\$USER\AppData\Roaming\KR_G152` 文件夹
 
 ## 参考
-#69 - New Waves launcher does not work out of the box (workaround in thread)
-应项目要求不予提供此链接
+
+[^1]: #69 - New Waves launcher does not work out of the box (workaround in thread)
+      应项目要求不予提供此链接

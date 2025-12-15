@@ -5,7 +5,7 @@
 
 Sunshine 和 NVIDIA GameStream 的开源客户端
 
-Moonlight 是 NVIDIA GameStream 协议的开源实现
+Moonlight 是 NVIDIA GameStream 协议的开源实现<br/>
 其实现了 NVIDIA Shield 使用的协议，并编写了一组第三方客户端
 
 <ProjectProperties name="Moonlight">
@@ -28,10 +28,14 @@ Moonlight 是 NVIDIA GameStream 协议的开源实现
 
 Moonlight 的一个分支，增强了一些功能
 
+::: warning
+此项目及其作者被曝有问题，参见 [关于「月光·阿西西」及其作者](/fragments/moonlight-axixi)
+:::
+
 <ProjectProperties name="月光·阿西西">
     <template #platform> <PlatformAndroid/> </template>
     <template #url> <LinkGithub project="Axixi2233/moonlight-android"/> </template>
-    <template #license> GPL-3.0 </template>
+    <template #license> GPL-3.0 (假开源) </template>
     <template #android> com.limelight.unofficialA </template>
 </ProjectProperties>
 
@@ -57,8 +61,8 @@ Moonlight 的自托管游戏串流主机
 
 Sunshine 是串流的服务端, 配置好后就可以在 Moonlight 上开始串流了
 
-你需要在 Sunshine 的托盘图标中右键，点击 <BadgeText text="Open Sunshine"/> 以打开 Sunshine 的 WebUI
-然后设置一个用户名和密码，以后打开 WebUI 时都会需要
+你需要在 Sunshine 的托盘图标中右键，点击 <BadgeText text="Open Sunshine"/> 以打开 Sunshine 的 WebUI<br/>
+然后设置一个用户名和密码，以后打开 WebUI 时都会需要<br/>
 可以在 <BadgeText text="Configuration"/> -> <BadgeText text="General"/> -> <BadgeText text="Locale"/> 中设置 WebUI 的语言为中文
 
 如果遇到了问题 可以查看 [官方 Troubleshooting](https://docs.lizardbyte.dev/projects/sunshine/latest/md_docs_2troubleshooting.html)

@@ -2,19 +2,27 @@
     import { NTooltip } from "naive-ui"
 
     const {
-        text
+        text,
+        maxWidth,
     } = defineProps<{
-        text : string
+        text : string,
+        maxWidth ?: string,
     }>()
 </script>
 
 <template>
     <ClientOnly>
-        <n-tooltip class="n-tooltip" trigger="hover" :theme-overrides="{
-            color: 'rgb(72, 72, 78)' // popoverColor
-        }">
+        <n-tooltip
+            trigger="click"
+            :style="{
+                maxWidth: maxWidth
+            }"
+            :theme-overrides="{
+                color: 'rgb(72, 72, 78)' // popoverColor
+            }"
+        >
             <template #trigger>
-                <u class="mark-hl"> {{ text }} </u>
+                <u class="tooltip-trigger mark-hl"> {{ text }} </u>
             </template>
 
             <div class="tooltip-content"><slot/></div>

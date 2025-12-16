@@ -18,3 +18,14 @@ const handleEvent = (id: string) => {
 onMounted(() => emitter.on("on-query-footnote", handleEvent));
 onUnmounted(() => emitter.off("on-query-footnote", handleEvent));
 </script>
+
+<style lang="scss">
+.footnotes {
+    font-size: 12px;
+
+    p {
+        line-height: 18px;
+        margin: 12px 0;
+    }
+}
+</style>

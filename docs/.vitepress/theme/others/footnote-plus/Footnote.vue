@@ -27,5 +27,10 @@ onUnmounted(() => emitter.off("on-query-footnote", handleEvent));
         line-height: 18px;
         margin: 12px 0;
     }
+
+    .footnotes-list:before {
+        content: "引用";
+        font-size: 14px;
+    }
 }
 </style>

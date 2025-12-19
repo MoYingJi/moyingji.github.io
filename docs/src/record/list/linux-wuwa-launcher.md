@@ -4,6 +4,9 @@
 
 ## 在 Wine 中安装并修复鸣潮启动器 [^1]
 
+[^1]: #69 - New Waves launcher does not work out of the box (workaround in thread)
+      应项目要求不予提供此链接
+
 正常在 Wine 中安装鸣潮启动器即可，此时启动器是无法打开的
 
 首先，我们要更改 WebView2 的兼容设置，使其检测到系统的环境为 Windows 7，在 Wine 中执行以下命令
@@ -84,8 +87,3 @@ echo "Patch applied successfully."
 
 在相同的 Prefix 中，这应该立即工作
 在不同的 Prefix 中，你应当软链接两个 Prefix 的 `C:\Users\$USER\AppData\Roaming\KR_G152` 文件夹
-
-## 参考
-
-[^1]: #69 - New Waves launcher does not work out of the box (workaround in thread)
-      应项目要求不予提供此链接

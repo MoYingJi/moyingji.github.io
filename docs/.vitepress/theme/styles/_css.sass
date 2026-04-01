@@ -2,18 +2,23 @@
 
 // unselectable 属性被占了... 我只能用另一个词了
 .unselectable, [nonselectable]
-    user-select: none
     -webkit-user-select: none
+    user-select: none
 
 html.dark [darkrevent]
     filter: invert(1)
     mix-blend-mode: screen
+
+// 修复 DocPill 和 VitePress 新版本的问题
+a.link > span.row > img
+    margin: 0
 
 // 样式注入
 
 span[mark]
     // 以此来指定这个 span 是用于标记的
     position: absolute
+    -webkit-user-select: none
     user-select: none
     pointer-events: none
     opacity: 0

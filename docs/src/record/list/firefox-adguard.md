@@ -16,8 +16,8 @@
 
 ### PC
 
-直接在 Firefox 的 <BadgeText text="下载"/> 页面中点击刚刚下载好的 xpi 文件，或者用 Firefox 打开 xpi 文件，就会弹出正常在商店安装扩展时的安装页面，此时点击 <BadgeText text="安装"/> 即可
+直接在 Firefox 的 <bt>下载</bt> 页面中点击刚刚下载好的 xpi 文件，或者用 Firefox 打开 xpi 文件，就会弹出正常在商店安装扩展时的安装页面，此时点击 <bt>安装</bt> 即可
 
 ### Android
 
-下载好后，点击右上角三个点，点击 <BadgeText text="设置"/>，下滑找到 <BadgeText text="关于 Firefox"/> 并点击进入关于页面，然后连点五次 Firefox 图标启用调试菜单，返回，现在就可以在设置页中找到 <BadgeText text="从文件安装扩展"/>，选择刚刚下载的 xpi 文件，然后就会弹出正常在商店安装扩展时的安装页面，此时点击 <BadgeText text="安装"/> 即可
+下载好后，点击右上角三个点，点击 <bt>设置</bt>，下滑找到 <bt>关于 Firefox</bt> 并点击进入关于页面，然后连点五次 Firefox 图标启用调试菜单，返回，现在就可以在设置页中找到 <bt>从文件安装扩展</bt>，选择刚刚下载的 xpi 文件，然后就会弹出正常在商店安装扩展时的安装页面，此时点击 <bt>安装</bt> 即可

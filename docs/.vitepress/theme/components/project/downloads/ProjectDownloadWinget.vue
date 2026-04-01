@@ -2,16 +2,18 @@
     import ProjectDownload from "./ProjectDownload.vue";
 
     const {
-        name
+        name,
+        img = false,
     } = defineProps<{
-        name : string
+        name  : string,
+        img  ?: boolean,
     }>()
 </script>
 
 <template>
     <ProjectDownload>
         <span><code>{{ name }}</code></span>
-        <span> </span>
-        <img class="unselectable" draggable="false" :alt="`winget/${name}`" :src="`https://img.shields.io/winget/v/${name}`"/>
+        <span v-if="img"> </span>
+        <img v-if="img" class="unselectable" draggable="false" :src="`https://img.shields.io/winget/v/${name}`"/>
     </ProjectDownload>
 </template>

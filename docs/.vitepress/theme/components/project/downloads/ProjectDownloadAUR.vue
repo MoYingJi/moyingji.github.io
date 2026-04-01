@@ -2,9 +2,11 @@
     import ProjectDownload from "./ProjectDownload.vue";
 
     const {
-        name
+        name,
+        img = false,
     } = defineProps<{
-        name : string
+        name  : string,
+        img  ?: boolean,
     }>()
 </script>
 
@@ -13,7 +15,7 @@
         <span class="project-aur">aur</span>
         <span>/</span>
         <span class="project-package-name">{{ name }}</span>
-        <span> </span>
-        <img class="unselectable" draggable="false" :alt="`aur/${name}`" :src="`https://img.shields.io/aur/version/${name}`"/>
+        <span v-if="img"> </span>
+        <img v-if="img" class="unselectable" draggable="false" :src="`https://img.shields.io/aur/version/${name}`"/>
     </ProjectDownload>
 </template>

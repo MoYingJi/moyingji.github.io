@@ -20,28 +20,20 @@ export function component(app: App) {
 }
 
 import * as Lumen from "@theojs/lumen"
-import * as Naive from "naive-ui/es/components"
 
-import NTooltipText from "./components/naive/NTooltipText.vue"
 import MaskText from "./components/MaskText.vue"
+import BadgeText from "./components/text/BadgeText.vue";
 
 import Footnote from "./others/footnote-plus/Footnote.vue"
 import FootnoteRef from "./others/footnote-plus/FootnoteRef.vue"
 
 export const components = {
-    "nt": NTooltipText,
     "mt": MaskText,
+    "bt": BadgeText,
 
     "DocPill": Lumen.DocPill,
     "DocLinks": Lumen.DocLinks,
     "DocBoxCube": Lumen.DocBoxCube,
-
-    "NButton": Naive.NButton,
-    "NFlex": Naive.NFlex,
-    "NIcon": Naive.NIcon,
-    "NImage": Naive.NImage,
-    "NSkeleton": Naive.NSkeleton,
-    "NTooltip": Naive.NTooltip,
 
     "Footnote": Footnote,
     "FootnoteRef": FootnoteRef,

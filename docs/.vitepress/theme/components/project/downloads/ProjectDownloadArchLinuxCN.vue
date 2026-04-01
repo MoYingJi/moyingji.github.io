@@ -2,9 +2,11 @@
     import ProjectDownload from "./ProjectDownload.vue";
 
     const {
-        name
+        name,
+        img = false,
     } = defineProps<{
-        name : string
+        name  : string,
+        img  ?: boolean,
     }>()
 </script>
 
@@ -13,7 +15,7 @@
         <span class="project-archlinuxcn">archlinuxcn</span>
         <span>/</span>
         <span class="project-package-name">{{ name }}</span>
-        <span> </span>
-        <img class="unselectable" draggable="false" :alt="`archlinuxcn/${name}`" :src="`https://img.shields.io/badge/dynamic/json?label=archlinuxcn&query=%24.version&url=https%3A%2F%2Fbuild.archlinuxcn.org%2Fapi%2Fv2%2Fpackages%2F${name}`" />
+        <span v-if="img"> </span>
+        <img v-if="img" class="unselectable" draggable="false" :src="`https://img.shields.io/badge/dynamic/json?label=archlinuxcn&query=%24.version&url=https%3A%2F%2Fbuild.archlinuxcn.org%2Fapi%2Fv2%2Fpackages%2F${name}`" />
     </ProjectDownload>
 </template>

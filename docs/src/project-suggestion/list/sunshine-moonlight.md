@@ -11,8 +11,8 @@ Moonlight 是 NVIDIA GameStream 协议的开源实现<br/>
 <ProjectProperties name="Moonlight">
     <template #platform> <PlatformWindows/> <PlatformLinux/> <PlatformMacOS/> <PlatformAndroid/> </template>
     <template #url>
-        <LinkGithub project="moonlight-stream/moonlight-qt" suffix="Qt (PC)"/>
-        <LinkGithub project="moonlight-stream/moonlight-android" suffix="Android"/>
+        <LinkGithub project="moonlight-stream/moonlight-qt" display="Qt (PC)"/>
+        <LinkGithub project="moonlight-stream/moonlight-android" display="Android"/>
     </template>
     <template #license> GPL-3.0 </template>
     <template #android> com.limelight </template>
@@ -35,7 +35,7 @@ Moonlight 的一个分支，增强了一些功能
 <ProjectProperties name="月光·阿西西">
     <template #platform> <PlatformAndroid/> </template>
     <template #url> <LinkGithub project="Axixi2233/moonlight-android"/> </template>
-    <template #license> GPL-3.0 (假开源) </template>
+    <template #license> GPL-3.0 <bt>可能有问题</bt> </template>
     <template #android> com.limelight.unofficialA </template>
 </ProjectProperties>
 
@@ -61,9 +61,9 @@ Moonlight 的自托管游戏串流主机
 
 Sunshine 是串流的服务端, 配置好后就可以在 Moonlight 上开始串流了
 
-你需要在 Sunshine 的托盘图标中右键，点击 <BadgeText text="Open Sunshine"/> 以打开 Sunshine 的 WebUI<br/>
+你需要在 Sunshine 的托盘图标中右键，点击 <bt>Open Sunshine</bt> 以打开 Sunshine 的 WebUI<br/>
 然后设置一个用户名和密码，以后打开 WebUI 时都会需要<br/>
-可以在 <BadgeText text="Configuration"/> -> <BadgeText text="General"/> -> <BadgeText text="Locale"/> 中设置 WebUI 的语言为中文
+可以在 <bt>Configuration</bt> -> <bt>General</bt> -> <bt>Locale</bt> 中设置 WebUI 的语言为中文
 
 如果遇到了问题 可以查看 [官方 Troubleshooting](https://docs.lizardbyte.dev/projects/sunshine/latest/md_docs_2troubleshooting.html)
 

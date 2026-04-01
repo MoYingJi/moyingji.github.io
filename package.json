@@ -1,11 +1,7 @@
 {
     "type": "module",
     "dependencies": {
-        "@nolebase/ui-asciinema": "^2.18.2",
-        "@theojs/lumen": "^5.8.2",
-        "asciinema-player": "^3.13.4",
-        "mitt": "^3.0.1",
-        "ts-regex-builder": "^1.8.2"
+        "mitt": "^3.0.1"
     },
     "devDependencies": {
         "@css-render/vue3-ssr": "^0.15.14",
@@ -13,17 +9,16 @@
         "@nolebase/vitepress-plugin-enhanced-readabilities": "^2.18.2",
         "@nolebase/vitepress-plugin-highlight-targeted-heading": "^2.18.2",
         "@nolebase/vitepress-plugin-page-properties": "^2.18.2",
+        "@theojs/lumen": "^5.8.2",
         "@types/markdown-it": "^14.1.2",
         "@vicons/ionicons5": "^0.13.0",
         "markdown-it-footnote": "^4.0.0",
         "markdown-it-ins": "^4.0.0",
         "markdown-it-mathjax3": "^4.3.2",
-        "naive-ui": "^2.43.2",
-        "sass": "^1.96.0",
-        "vite": "^7.2.7",
-        "vitepress": "2.0.0-alpha.13",
-        "vitepress-demo-plugin": "^1.5.1",
-        "vue": "^3.5.25"
+        "sass": "^1.98.0",
+        "vite": "^7.3.1",
+        "vitepress": "2.0.0-alpha.17",
+        "vue": "^3.5.31"
     },
     "scripts": {
         "dev": "vitepress dev docs",

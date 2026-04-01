@@ -13,5 +13,8 @@
 </script>
 
 <template>
-    <VPBadge :style="{ color: tColor, backgroundColor: bColor }" :text="text" />
+    <VPBadge
+        :style="{ color: tColor, backgroundColor: bColor }"
+        :text="text"
+    > <slot/> </VPBadge>
 </template>

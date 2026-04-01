@@ -31,9 +31,9 @@ export const components = {
     "mt": MaskText,
     "bt": BadgeText,
 
-    "DocPill": Lumen.DocPill,
-    "DocLinks": Lumen.DocLinks,
-    "DocBoxCube": Lumen.DocBoxCube,
+    "DocPill": Lumen.Pill,
+    "DocLinks": Lumen.Links,
+    "DocBoxCube": Lumen.BoxCube,
 
     "Footnote": Footnote,
     "FootnoteRef": FootnoteRef,

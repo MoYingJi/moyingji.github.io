@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import { DocPill } from "@theojs/lumen"
+    import { Pill } from "@theojs/lumen"
 
     const {
         project,
@@ -11,23 +11,23 @@
         image   ?: boolean | string | { light: string, dark: string },
     }>()
 
-    const _s = display || project
-
     const githubIcon = {
         light: "https://i.theojs.cn/logo/github.svg",
         dark: "https://i.theojs.cn/logo/github-dark.svg"
     }
 
-    const _image = typeof image === "boolean"
-        ? ( image ? githubIcon : undefined )
-        : image
+    const imageDisplay = image === undefined
+        ? githubIcon
+        : typeof image === "boolean"
+            ? githubIcon
+            : image
 </script>
 
 <template>
-    <DocPill
-        :name="'GitHub: ' + _s"
+    <Pill
+        :name="'GitHub: ' + (display || project)"
         :link="'https://github.com/' + project"
-        :image="_image"
+        :image="imageDisplay"
         rel="noopener noreferrer"
     />
 </template>

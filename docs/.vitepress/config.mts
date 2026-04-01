@@ -1,7 +1,6 @@
 import { DefaultTheme, defineConfig, UserConfig } from "vitepress"
 
 import * as MdExt from "./extensions/markdown/_script.ts"
-import { vitepressDemoPlugin } from "vitepress-demo-plugin"
 import mathjax3 from "markdown-it-mathjax3"
 import mdIns from "markdown-it-ins"
 import mdFootnote from "markdown-it-footnote"
@@ -87,7 +86,6 @@ const config: UserConfig<NoInfer<DefaultTheme.Config>> = {
 
         config(md) {
             md.use(mathjax3)
-            md.use(vitepressDemoPlugin)
             md.use(mdIns)
             md.use(mdFootnote)
 
@@ -129,7 +127,7 @@ const config: UserConfig<NoInfer<DefaultTheme.Config>> = {
                 "@nolebase/vitepress-plugin-highlight-targeted-heading",
                 "@nolebase/ui",
 
-                "naive-ui", "date-fns", "vueuc"
+                "date-fns", "vueuc"
             ]
         }
     },

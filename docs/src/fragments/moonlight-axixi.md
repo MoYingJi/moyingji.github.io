@@ -12,7 +12,7 @@
 
 这些丑闻我是最近才知道的，没想到你原来是这样的人么？软件做得挺好，人做得不行，比起闭源，我更反感假开源
 
-[^1]: 「月光·阿西西」鸿蒙版的上游 [Moonlight-OHOS](https://gitee.com/smdsbz/moonlight-ohos) 使用了 Moonlight 的 GPL-3.0 组件却以 MIT 协议开源，所以实际上违反其的是 Moonlight-OHOS，但由于其传染性，「月光·阿西西」的鸿蒙版也间接违反了其
+[^1]: 「月光·阿西西」鸿蒙版的上游 [Moonlight-OHOS](https://gitee.com/smdsbz/moonlight-ohos) 使用了 Moonlight 的 GPL-3.0 组件却以 MIT 协议开源
 
 [^2]: [GitHub 仓库 250210 到 250916](https://github.com/Axixi2233/moonlight-android/compare/250210...250916) 里这段时间的仓库没有任何实质性更新，却发布多个 Releases
       [Release 2501218](https://github.com/Axixi2233/moonlight-android/releases/tag/251218) 声称已经完整开源

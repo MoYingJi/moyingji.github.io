@@ -1,10 +1,15 @@
 // 自定义样式
 
+:root
+    --vp-font-family-base: sans-serif
+    --vp-font-family-mono: monospace
+
 // unselectable 属性被占了... 我只能用另一个词了
 .unselectable, [nonselectable]
     -webkit-user-select: none
     user-select: none
 
+// 反转颜色以适配暗色模式
 html.dark [darkrevent]
     filter: invert(1)
     mix-blend-mode: screen

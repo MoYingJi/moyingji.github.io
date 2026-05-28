@@ -1,4 +1,5 @@
-import { DefaultTheme, defineConfig, UserConfig } from "vitepress"
+import { defineConfig, UserConfig } from "vitepress"
+import { DefaultTheme } from "vitepress/theme-without-fonts"
 
 import * as MdExt from "./extensions/markdown/_script.ts"
 import mathjax3 from "markdown-it-mathjax3"

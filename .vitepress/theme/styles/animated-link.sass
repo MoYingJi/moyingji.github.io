@@ -1,0 +1,38 @@
+// 来自 Linho1219，有修改
+// https://github.com/Linho1219/LinhoNotes/blob/52e08d37ba7c8980b9c638b12e127c8175c4408e/.vitepress/theme/styles/animation.css#L69-L98
+// https://github.com/Linho1219/LinhoNotes/blob/52e08d37ba7c8980b9c638b12e127c8175c4408e/.vitepress/theme/styles/fix.css#L120-L133
+
+.vp-doc .animated-link
+    padding-bottom: 0.12em
+    color: var(--vp-c-brand-1)
+    text-decoration: none
+    position: relative
+    border-radius: 1px
+    background-image: linear-gradient(transparent calc(100% - 0.1em), var(--vp-c-brand-1) 0.1em)
+    background-repeat: no-repeat
+    background-position: right
+    background-size: 0 100%
+    transition: background-color 0.2s, box-shadow 0.2s, background-size 0.3s, opacity 0.2s
+
+    font-weight: inherit
+
+    &:hover
+        color: var(--vp-c-brand-1) !important
+        background-color: var(--vp-c-brand-soft)
+        box-shadow: var(--vp-c-brand-soft) 0 0 0 3px
+        opacity: 1 !important
+        background-position: left
+        background-size: 100% 100%
+
+    &:active
+        opacity: 0.6 !important
+
+    // 外链提示
+    &::after
+        content: ""
+        width: 0.7em !important
+        height: 0.7em !important
+        margin-left: 0.1em !important
+        color: inherit !important
+        transform: scale(1.2)
+        opacity: 0.8

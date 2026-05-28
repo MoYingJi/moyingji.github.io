@@ -1,0 +1,53 @@
+// Local Search Box Animations
+
+@keyframes search-box-enter
+    from
+        opacity: 0
+    to
+        opacity: 1
+
+@keyframes search-box-leave
+    from
+        opacity: 1
+    to
+        opacity: 0
+
+@keyframes search-shell-enter
+    from
+        transform: translateY(-100%)
+        //scale: 0.7
+    to
+        transform: none
+
+@keyframes search-shell-leave
+    from
+        transform: none
+    to
+        transform: translateY(-100%)
+        //scale: 0.7
+
+.VPLocalSearchBox
+
+    &.v-enter
+        animation: search-box-enter 0.3s cubic-bezier(0, 1, 0, 1) forwards
+
+        & > .shell
+            animation: search-shell-enter 0.3s ease forwards
+
+    &.v-leave
+        animation: search-box-leave 0.3s cubic-bezier(0.7, 0, 0.7, 0) forwards
+
+        & > .shell
+            animation: search-shell-leave 0.3s ease forwards
+
+@keyframes search-result-enter
+    from
+        height: 0
+    to
+        height: 1rm
+
+ul#localsearch-list
+    & > li
+        & > a
+            transition: all ease 0.15s
+

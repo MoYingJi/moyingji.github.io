@@ -1,0 +1,89 @@
+@use "sass:string"
+
+// 光标样式自定义
+
+$border-width: 2px
+$border-alpha: 0.5
+$active-background-alpha: 0.4
+
+$ring-size: 37px
+$ring-size-active: 24px
+$ring-size-down: 19px
+
+$transition-props: background-color, backdrop-filter, width, height
+$transition-time: 0.3s
+$transition-down-time: 0.1s
+
+// 我 TM 设爆! 没人的 z-index 比我大!
+$z-index-cursor-ring: 2147483647
+
+@mixin transition-active($t)
+    $s: ''
+    @each $p in $transition-props
+        $s: #{ $s + #{$p} $t + "," }
+    $s: string.slice($s, 1, -2)
+    transition: #{$s}
+
+
+// Hover 时的 Active 样式
+
+:any-link, button, summary,
+.mask-text, .tooltip-trigger,
+.n-switch, .nolebase-ui-input-horizontal-option
+    --custom-cursor-ring: active
+
+// 深色 / 浅色 主题
+
+html.dark body.enable-cursor
+    &, *
+        cursor: url(cursor-white.png) 3 3, auto !important
+    .cursor-ring
+        border-color: rgba(255, 255, 255, $border-alpha)
+        --active-background-color: rgba(255, 255, 255, #{$active-background-alpha})
+html body.enable-cursor
+    &, *
+        cursor: url(cursor-black.png) 3 3, auto !important
+    .cursor-ring
+        border-color: rgba(0, 0, 0, $border-alpha)
+        --active-background-color: rgba(0, 0, 0, #{$active-background-alpha})
+
+// Box 样式
+
+.cursor-ring-box
+    position: fixed
+    top: 0
+    width: 100%
+    height: 100%
+    overflow: hidden
+    z-index: $z-index-cursor-ring
+    pointer-events: none
+
+// Cursor Ring 样式
+
+.cursor-ring
+    position: absolute
+    clip-path: inset(0 0 0 0)
+    width: $ring-size
+    height: $ring-size
+    background-color: transparent
+    border: $border-width solid
+    border-radius: 50%
+    pointer-events: none
+    transform: translate(-50%, -50%)
+
+    @include transition-active($transition-time)
+
+    // 此处的 backdrop-filter 有一些神奇小 bug
+
+    &.active
+        background-color: var(--active-background-color)
+        // backdrop-filter: blur(2px)
+        width: $ring-size-active
+        height: $ring-size-active
+
+    &.down
+        @include transition-active($transition-down-time)
+        background-color: var(--active-background-color)
+        // backdrop-filter: blur(3px)
+        width: $ring-size-down
+        height: $ring-size-down

@@ -1,0 +1,12 @@
+# Node
+/node_modules/
+
+# VitePress
+/.vitepress/cache/
+/.vitepress/dist/
+
+# IDE
+/.idea/
+
+# Others
+.directory

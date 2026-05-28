@@ -1,0 +1,20 @@
+// marker
+// https://vitepress.yiov.top/style
+
+.mark-hl
+    white-space: nowrap
+    position: relative
+
+.mark-hl:after
+    content: ""
+    position: absolute
+    z-index: -1
+    top: 100%
+    left: 0
+    right: 0
+    bottom: 0
+    transition: top 200ms cubic-bezier(0, 0.8, 0.13, 1)
+    background-color: #ffce0050 // var(--vp-nolebase-mark-bg-color)
+
+.mark-hl:hover:after
+    top: 0

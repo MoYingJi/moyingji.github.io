@@ -154,8 +154,12 @@ umu-run "/path/to/game.exe"
 # 或者也可以给游戏加参数
 umu-run "/path/to/game.exe" -SkipSplash -dx12
 # 通过环境变量，分别指定自定义 Proton 和 Wine Prefix（Compat Data）
-PROTONPATH="/path/to/proton/" WINEPREFIX="/path/to/prefix" umu-run "/path/to/game.exe"
+PROTONPATH="/path/to/proton" WINEPREFIX="/path/to/prefix" umu-run "/path/to/game.exe"
 ```
+
+> [!IMPORTANT]
+>
+> `PROTONPATH` 并不是 Proton 的可执行文件，而是 Proton 的**安装路径**，这是一个目录。Proton 的可执行文件位于 `$PROTONPATH/proton`
 
 大多第三方启动器都默认使用了 UMU 启动游戏
 
@@ -173,7 +177,7 @@ PROTONPATH="/path/to/proton/" WINEPREFIX="/path/to/prefix" umu-run "/path/to/gam
 >
 > 内容编写于 2026-05-25，可能有时效性
 
-由于 X.org 不支持 HDR，因此需要将 Proton 切换到原生 Wayland，设置环境变量 `PROTON_ENABLE_WAYLAND=1` 启用 Proton 的实验性原生 Wayland 驱动，这可能会引发一些问题。然后设置环境变量 `PROTON_ENABLE_HDR=1` 启用 HDR 支持
+由于 X.org 不支持 HDR，因此需要将 Proton 切换到原生 Wayland，设置环境变量 `PROTON_ENABLE_WAYLAND=1` 启用 Proton 的实验性原生 Wayland 驱动，这可能会引发一些问题。然后设置环境变量 `PROTON_ENABLE_HDR=1` 启用 HDR 支持，部分游戏还可能需要 `DXVK_HDR=1`
 
 ### NVIDIA DLSS
 
@@ -185,6 +189,10 @@ PROTONPATH="/path/to/proton/" WINEPREFIX="/path/to/prefix" umu-run "/path/to/gam
 
 ### Workarounds
 
+#### 原神
+
+[为原神开启 HDR](./workarounds/gs-hdr.md)
+
 #### 鸣潮
 
 [在 Linux 上运行鸣潮官方启动器](./workarounds/wuwa-launcher.md)
@@ -195,7 +203,7 @@ PROTONPATH="/path/to/proton/" WINEPREFIX="/path/to/prefix" umu-run "/path/to/gam
 
 这是系统缩放与 Wine 的 DPI 不匹配的问题
 
-[打开 Wine 设置](#打开-wine-设置)，打开「**显示**」选项卡，找到「**屏幕分辨率**」，（如果这项从未不内你设置过）将输入框中的数字（一般默认是 96）乘以你的缩放再填进去就好了
+[打开 Wine 设置](#打开-wine-设置)，打开「**显示**」选项卡，找到「**屏幕分辨率**」，（如果这项从未不被你设置过）将输入框中的数字（一般默认是 96）乘以你的缩放再填进去就好啦
 
 ## Steam
 
@@ -236,6 +244,12 @@ echo "%command%" > $(mktemp /tmp/steam-command.XXXXXXXXXX)
 
 除 Steam 外，大多第三方启动器也都默认会从这里寻找 Proton
 
+### ProtonDB
+
+可以在 [ProntonDB](https://www.protondb.com/) 上查找游戏在 Linux 上的运行情况。可以查看综合评级、来自游戏玩家反馈的运行情况和他们的运行环境
+
+还可以安装浏览器插件如 [ProtonDB for Steam](https://github.com/trytonlux/ProtonDB-for-Steam) 以在 Steam 商店页面方便地显示来自 ProtonDB 的评级以及跳转到此游戏对应的 ProtonDB 页面
+
 ### Steam 库所在分区限制影响 compatdata
 
 如果 Steam 游戏库位于 NTFS 或 exFAT 等有限制的文件系统，这会有点麻烦
@@ -244,7 +258,7 @@ Proton 会在 [Wine Prefix](#wine-prefix) 中的 `dosdevices` 文件夹中创建
 
 对于支持符号链接但不支持特殊字符的文件系统，可以直接将 Steam 库中的 `compatdata` 文件夹迁移至支持的文件系统，并创建一个符号链接，将 Steam 库中的 `compatdata` 链接到迁移的位置。我习惯全部塞到 `~/.local/share/Steam/steamapps/compatdata/` 里面
 
-如果连符号链接都不支持，那只能从[启动选项](#基础知识---启动选项)下手，使用 `STEAM_COMPAT_DATA_PATH` 环境变量手动指定位置。迁移 `compatdata`。对于每个在这个库的游戏，在启动选项前添加这个环境变量，就像
+如果连符号链接都不支持，那就从[启动选项](#基础知识---启动选项)下手，使用 `STEAM_COMPAT_DATA_PATH` 环境变量手动指定位置。迁移 `compatdata`。对于每个在这个库的游戏，在启动选项前添加这个环境变量，就像
 
 ```shell
 STEAM_COMPAT_DATA_PATH="$HOME/.local/share/Steam/steamapps/compatdata/%AppId%" %command%
@@ -289,6 +303,16 @@ STEAM_COMPAT_DATA_PATH="$HOME/.local/share/Steam/steamapps/compatdata/%AppId%" %
 NVIDIA 驱动会附上一份 README。它应该已经在你电脑里了。你可以通过包管理器查看 NVIDIA 驱动相关的包拥有哪些文件。Arch Linux 的 `extra/nvidia-utils` 在 `/usr/share/doc/nvidia/` 里
 
 当然，也有一份[在线版](https://download.nvidia.com/XFree86/Linux-x86_64/595.71.05/README/)，最好将 URL 中的驱动版本换成你现在的
+
+### NVIDIA GPU 未被使用
+
+混合模式下，即使加上了 `prime-run` 还是用的核显，可以试试下面这组神秘的环境变量
+
+```shell
+DRI_PRIME=1 VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/nvidia_icd.json NV_PRIME_RENDER_OFFLOAD=1 VK_LAYER_NV_optimus=NVIDIA_only GLX_VENDOR_LIBRARY_NAME=nvidia
+```
+
+什么原理？我不知道（
 
 ### NVIDIA Dynamic Boost
 

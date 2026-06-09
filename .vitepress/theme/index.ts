@@ -10,6 +10,9 @@ import "./styles/_css.ts"
 import "@nolebase/vitepress-plugin-enhanced-readabilities/client/style.css"
 import "@nolebase/vitepress-plugin-enhanced-mark/client/style.css"
 
+import { NolebaseInlineLinkPreviewPlugin } from '@nolebase/vitepress-plugin-inline-link-preview/client'
+import '@nolebase/vitepress-plugin-inline-link-preview/client/style.css'
+
 import * as Comp from "./comps.ts"
 
 if (!import.meta.env.SSR) {
@@ -30,6 +33,8 @@ export default {
         const comps = Comp.components
         Comp.component(app)
         Object.keys(comps).forEach(k => app.component(k, comps[k]))
+
+        app.use(NolebaseInlineLinkPreviewPlugin)
 
         if (!import.meta.env.SSR) {
             initUserSettings()

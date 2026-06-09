@@ -10,6 +10,6 @@ hero:
     actions:
       - theme: alt
         text: Linux 是怎么玩游戏的🤔？
-        link: /linux/gaming
+        link: /linux/gaming/
 ---
 

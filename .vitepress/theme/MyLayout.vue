@@ -14,7 +14,7 @@ const Layout = h(DefaultTheme.Layout, null, {
     // 为较窄的屏幕（通常是小于 iPad Mini）添加阅读增强菜单
     "nav-screen-content-after": () => h(ER.NolebaseEnhancedReadabilitiesScreenMenu),
     // 闪烁高亮当前的目标标题
-    'layout-top': () => [ h(NolebaseHighlightTargetedHeading), ],
+    "layout-top": () => [ h(NolebaseHighlightTargetedHeading), ],
 })
 </script>
 

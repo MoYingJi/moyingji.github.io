@@ -6,6 +6,10 @@ import mathjax3 from "markdown-it-mathjax3"
 import mdIns from "markdown-it-ins"
 import mdFootnote from "markdown-it-footnote"
 
+import { InlineLinkPreviewElementTransform } from '@nolebase/vitepress-plugin-inline-link-preview/markdown-it'
+
+import shellSession from "@robot-inventor/shell-session-syntax";
+
 // https://vitepress.dev/zh/reference/site-config
 const config: UserConfig<NoInfer<DefaultTheme.Config>> = {
     title: "MoYingJi QwQ",
@@ -15,8 +19,6 @@ const config: UserConfig<NoInfer<DefaultTheme.Config>> = {
     cleanUrls: true,
 
     rewrites: {
-        // List
-        ":path/list/:name": ":path/:name",
     },
 
     themeConfig: {
@@ -47,9 +49,9 @@ const config: UserConfig<NoInfer<DefaultTheme.Config>> = {
                             navigateText: "切换",
                             closeText: "关闭",
                         },
-                    }
+                    },
                 },
-            }
+            },
         },
         editLink: {
             pattern: "https://github.com/MoYingJi/moyingji.github.io/blob/main/docs/:path?plain=1",
@@ -60,7 +62,7 @@ const config: UserConfig<NoInfer<DefaultTheme.Config>> = {
 
         docFooter: {
             prev: "上一页",
-            next: "下一页"
+            next: "下一页",
         },
         darkModeSwitchLabel: "外观",
         returnToTopLabel: "返回顶部",
@@ -72,7 +74,7 @@ const config: UserConfig<NoInfer<DefaultTheme.Config>> = {
     locales: {
         root: {
             label: "中文",
-            lang: "zh-CN"
+            lang: "zh-CN",
         },
     },
 
@@ -82,13 +84,14 @@ const config: UserConfig<NoInfer<DefaultTheme.Config>> = {
         // https://vitepress.dev/zh/reference/site-config#markdown
 
         image: {
-            lazyLoading: true
+            lazyLoading: true,
         },
 
         config(md) {
             md.use(mathjax3)
             md.use(mdIns)
             md.use(mdFootnote)
+            md.use(InlineLinkPreviewElementTransform)
 
             MdExt.config(md)
             md.set({
@@ -96,13 +99,17 @@ const config: UserConfig<NoInfer<DefaultTheme.Config>> = {
             })
         },
 
+        async shikiSetup(shiki) {
+            await shiki.loadLanguage(shellSession)
+        },
+
         container: {
             tipLabel: "提示",
             warningLabel: "警告",
             dangerLabel: "危险",
             infoLabel: "信息",
-            detailsLabel: "详细信息"
-        }
+            detailsLabel: "详细信息",
+        },
     },
 
     vite: {
@@ -117,20 +124,22 @@ const config: UserConfig<NoInfer<DefaultTheme.Config>> = {
         optimizeDeps: {
             exclude: [
                 "@nolebase/vitepress-plugin-enhanced-readabilities/client",
+                "@nolebase/vitepress-plugin-inline-link-preview/client",
                 "vitepress",
                 "@nolebase/ui",
-            ]
+            ],
         },
         ssr: {
             noExternal: [
                 "@nolebase/ui-asciinema",
                 "@nolebase/vitepress-plugin-enhanced-readabilities",
                 "@nolebase/vitepress-plugin-highlight-targeted-heading",
+                "@nolebase/vitepress-plugin-inline-link-preview",
                 "@nolebase/ui",
 
-                "date-fns", "vueuc"
-            ]
-        }
+                "date-fns", "vueuc",
+            ],
+        },
     },
 
     vue: {
@@ -139,9 +148,9 @@ const config: UserConfig<NoInfer<DefaultTheme.Config>> = {
             compilerOptions: {
                 isCustomElement: (tag) => {
                     if (tag.startsWith("mjx-")) return true
-                }
-            }
-        }
+                },
+            },
+        },
     },
 }
 

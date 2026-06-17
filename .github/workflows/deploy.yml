@@ -21,10 +21,12 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v6
-              with: { fetch-depth: 0 }
+              with:
+                fetch-depth: 0
 
             - uses: pnpm/action-setup@v6
-              with: { version: 9 }
+              with:
+                version: 11
 
             - name: Setup Node
               uses: actions/setup-node@v6
@@ -43,7 +45,8 @@ jobs:
 
             - name: Upload artifact
               uses: actions/upload-pages-artifact@v5
-              with: { path: ./.vitepress/dist }
+              with:
+                path: ./.vitepress/dist
 
     # 部署工作
     deploy:

@@ -3,7 +3,7 @@
 OverlayFS 的内容来自多个目录，可以让上层目录（upperdir）的内容覆盖下层目录（lowerdir）
 
 有关它的详细信息，可以看
- - [Overlay filesystem - Arch Wiki](https://wiki.archlinux.org/title/Overlay_filesystem)
+ - [Overlay filesystem - ArchWiki](https://wiki.archlinux.org/title/Overlay_filesystem)
  - [Overlay Filesystem - The Linux Kernel documentation](https://docs.kernel.org/filesystems/overlayfs.html)
 
 这里只介绍它的常见用途之一：将 OverlayFS 的所有修改操作都应用到可写的上层目录，这样修改 OverlayFS 时就不会实际修改下层目录

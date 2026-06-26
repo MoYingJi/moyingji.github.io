@@ -298,7 +298,7 @@ STEAM_COMPAT_DATA_PATH="$HOME/.local/share/Steam/steamapps/compatdata/%AppId%" %
 
 ## NVIDIA
 
-最基础的安装就不用我说了吧，Arch 最简单的可以看 [Arch Wiki](https://wiki.archlinux.org/title/NVIDIA)，其它发行版我没用过也不知道啊（
+最基础的安装就不用我说了吧，Arch 最简单的可以看 [NVIDIA - ArchWiki](https://wiki.archlinux.org/title/NVIDIA)，其它发行版我没用过也不知道啊（
 
 NVIDIA 驱动会附上一份 README。它应该已经在你电脑里了。你可以通过包管理器查看 NVIDIA 驱动相关的包拥有哪些文件。Arch Linux 的 `extra/nvidia-utils` 在 `/usr/share/doc/nvidia/` 里
 
@@ -329,3 +329,143 @@ sudo systemctl enable --now nvidia-powerd.service
 开启了 Dynamic Boost 后，笔记本的模式切换也会影响最大功耗，比如我，只有在笔记本的狂暴模式下才能解锁标称的最大功耗 140W，否则只有 80W
 
 [官方配置说明](https://download.nvidia.com/XFree86/Linux-x86_64/595.71.05/README/dynamicboost.html)
+
+## Intel CPU
+
+### 读取功耗
+
+MangoHud 或其它程序读不到 CPU 功耗或者读到的值始终为 0 W，这是因为 RAPL 的功耗数据默认仅 root 可读
+
+创建 `rapl` 组并将自己加入
+
+```shell
+sudo groupadd rapl
+sudo usermod -aG rapl "$USER"
+```
+
+创建文件 `/etc/udev/rules.d/70-intel-rapl.rules` 并添加以下规则
+
+```
+ACTION=="add", SUBSYSTEM=="powercap", KERNEL=="intel-rapl:*", \
+  RUN+="/usr/bin/chgrp rapl /sys/%p/energy_uj", \
+  RUN+="/usr/bin/chmod g+r /sys/%p/energy_uj"
+```
+
+重启生效
+
+<details>
+
+<summary>其它方法</summary>
+
+1. 不使用用户组的偷懒方法
+
+   创建文件 `/etc/udev/rules.d/70-intel-rapl.rules` 并添加以下规则
+
+   ```
+   ACTION=="add", SUBSYSTEM=="powercap", KERNEL=="intel-rapl:*", \
+     RUN+="/usr/bin/chmod a+r /sys/%p/energy_uj"
+   ```
+
+   重启生效，或运行以下命令立即生效
+
+   ```shell
+   sudo udevadm control --reload
+   sudo udevadm trigger --action=add --subsystem-match=powercap
+   ```
+
+2. 立即生效但不持久化（适合在脚本中使用）
+
+   ```bash
+   #!/usr/bin/env bash
+
+   [ "${#INTEL_CPU_POWER_FILE[@]}" -lt 1 ] && INTEL_CPU_POWER_FILE=(
+       /sys/class/powercap/intel-rapl:0/energy_uj
+       /sys/class/powercap/intel-rapl:0:*/energy_uj
+   )
+
+   for file in "${INTEL_CPU_POWER_FILE[@]}"; do
+       if [ -f "$file" ] && [ ! -r "$file" ]; then
+           sudo chmod a+r "$file"
+       fi
+   done
+   ```
+
+</details>
+
+### 降压
+
+[Undervolting CPU - ArchWiki](https://wiki.archlinux.org/title/Undervolting_CPU)
+
+> [!CAUTION] 警告
+>
+> 降压可能会导致硬件损坏！
+
+可使用 [intel-undervolt](https://github.com/kitsunyan/intel-undervolt) 工具降压
+
+> [!TIP]
+>
+> ArchWiki 上说它与 Tiger Lake 及更高版本的 CPU 不兼容，但我的 Raptor Lake (i9-14900HX) 是正常的，可以试试
+
+编辑 `/etc/intel-undervolt.conf` 文件中的 CPU Undervolting 部分
+
+```shell
+# Enable or Disable Triggers (elogind)
+# Usage: enable [yes/no]
+
+enable no
+
+# CPU Undervolting
+# Usage: undervolt ${index} ${display_name} ${undervolt_value}
+# Example: undervolt 2 'CPU Cache' -25.84
+
+undervolt 0 'CPU' 0
+undervolt 1 'GPU' 0
+undervolt 2 'CPU Cache' 0
+undervolt 3 'System Agent' 0
+undervolt 4 'Analog I/O' 0
+
+# Power Limits Alteration
+# ... 省略
+```
+
+执行 `sudo intel-undervolt apply` 使配置生效，执行 `sudo intel-undervolt read` 读取状态
+
+示例
+
+```console
+$ sed -n '10,14p' /etc/intel-undervolt.conf # 配置展示
+undervolt 0 'CPU' -50
+undervolt 1 'GPU' 0
+undervolt 2 'CPU Cache' -50
+undervolt 3 'System Agent' 0
+undervolt 4 'Analog I/O' 0
+$ sudo intel-undervolt apply # 应用配置，同时会输出当前状态
+CPU (0): -49.80 mV
+GPU (1): -0.00 mV
+CPU Cache (2): -49.80 mV
+System Agent (3): -0.00 mV
+Analog I/O (4): -0.00 mV
+```
+
+> [!TIP]
+>
+> 如果提示 `Values do not equal`
+>
+> ```console
+> $ sudo intel-undervolt apply
+> CPU (0): Values do not equal
+> GPU (1): -0.00 mV
+> CPU Cache (2): Values do not equal
+> System Agent (3): -0.00 mV
+> Analog I/O (4): -0.00 mV
+> ```
+>
+> 那就检查一下你的 CPU 是否支持降压、BIOS 是否限制了降压
+>
+> 以我的联想拯救者为例，我的 i9-14900HX 支持降压。在 BIOS 的详细设置中打开「系统设置」选项卡，打开「**拯救者性能调优**」，关闭「**低电压保护**」
+
+测试稳定后就可以开启服务使更改永久生效
+
+```shell
+sudo systemctl enable --now intel-undervolt
+```

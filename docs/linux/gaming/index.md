@@ -4,7 +4,7 @@
 
  - 本文会尽量用词正确
  - 本文适用于 Arch Linux，但尽量在其它发行版下也保持正确
- - 本文默认读者拥有 Linux 基础
+ - 本文默认读者拥有 Linux 基础，且偏向手搓脚本，当然使用现成的启动器的也可以参考部分内容（~~需要的看不懂，能看懂的不需要~~）
 
 ## 使用 Proton 游玩 Windows 游戏
 
@@ -159,9 +159,11 @@ PROTONPATH="/path/to/proton" WINEPREFIX="/path/to/prefix" umu-run "/path/to/game
 
 > [!IMPORTANT]
 >
-> `PROTONPATH` 并不是 Proton 的可执行文件，而是 Proton 的**安装路径**，这是一个目录。Proton 的可执行文件位于 `$PROTONPATH/proton`
+> `PROTONPATH` 并不是 Proton 的可执行文件，而是 Proton 的**安装路径**，这是一个目录。Proton 的可执行文件位于 `$PROTONPATH/proton`，这是一个 Python 脚本
 
 大多第三方启动器都默认使用了 UMU 启动游戏
+
+部分游戏会检测它们是否由 Steam 启动。一些社区版 Proton 会根据环境变量 `UMU_USE_STEAM=1` 使用自带的 `steam.exe` 启动游戏，使游戏的父进程为 `steam.exe` 以欺骗游戏
 
 ### ProtonPlus
 
@@ -185,7 +187,22 @@ PROTONPATH="/path/to/proton" WINEPREFIX="/path/to/prefix" umu-run "/path/to/game
  - [DLSS / Smooth Motion / Reflex — NVIDIA Driver Installation Guide](https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/gaming.html)
  - [Passing driver settings · jp7677/dxvk-nvapi Wiki](https://github.com/jp7677/dxvk-nvapi/wiki/Passing-driver-settings)
 
-有了 dxvk-nvapi，大多数功能开箱即用，除了在 Vulkan 上的 NVIDIA Reflex（比如终末地），需要额外的 Vulkan 层，Arch 系用户可以直接安装 [aur/dxvk-nvapi-vkreflex-layer](https://aur.archlinux.org/packages/dxvk-nvapi-vkreflex-layer)（其它发行版可以看[这里](https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/gaming.html#reflex-for-vulkan-steam-play-proton)），然后为游戏设置环境变量 `DXVK_NVAPI_VKREFLEX=1`
+有了 dxvk-nvapi（Proton 9.0 以上内置），大多数功能开箱即用，除了在 Vulkan 上的 NVIDIA Reflex（比如终末地），需要额外的 Vulkan 层，Arch 系用户可以直接安装 [aur/dxvk-nvapi-vkreflex-layer](https://aur.archlinux.org/packages/dxvk-nvapi-vkreflex-layer)（其它发行版可以看[这里](https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/gaming.html#reflex-for-vulkan-steam-play-proton)），然后为游戏设置环境变量 `DXVK_NVAPI_VKREFLEX=1`
+
+#### 常见环境变量示例
+
+```shell
+# DLSS 优设 - 模型预设
+DXVK_NVAPI_DRS_NGX_DLSS_FG_OVERRIDE_RENDER_PRESET_SELECTION="render_preset_b"      # 帧生成   - 预设 B
+DXVK_NVAPI_DRS_NGX_DLSS_SR_OVERRIDE_RENDER_PRESET_SELECTION="render_preset_m"      # 超分辨率 - 预设 M
+DXVK_NVAPI_DRS_NGX_DLSS_RR_OVERRIDE_RENDER_PRESET_SELECTION="render_preset_latest" # 光线重建 - 最新预设
+
+# DLSS 指示器
+PROTON_DLSS_INDICATOR="1"
+
+# 谎报 GPU 架构为 Blackwell（用于强开终末地 4x 帧生成）
+DXVK_NVAPI_GPU_ARCH="GB200"
+```
 
 ### Workarounds
 
@@ -196,6 +213,10 @@ PROTONPATH="/path/to/proton" WINEPREFIX="/path/to/prefix" umu-run "/path/to/game
 #### 鸣潮
 
 [在 Linux 上运行鸣潮官方启动器](./workarounds/wuwa-launcher.md)
+
+#### 米家游戏全局光照闪烁
+
+米家部分游戏（原神、崩铁、绝区零 DX 11）有全局光照的闪烁问题。除崩铁外，均可用 [dxvk-gplasync](https://gitlab.com/Ph42oN/dxvk-gplasync) 解决。崩铁暂时无解，目前只能降低「**光照质量**」（比如从 **非常高** 降低到 **高** 可以缓解一些）
 
 ### 其它问题
 
@@ -274,7 +295,7 @@ STEAM_COMPAT_DATA_PATH="$HOME/.local/share/Steam/steamapps/compatdata/%AppId%" %
 
 要使用它，只需要将 `mangohud` 包装在游戏命令的外面，比如[在 Steam 中使用启动选项](#基础知识---启动选项) `mangohud %command%`
 
-它类似于 Windows 上微星小飞机的性能监控叠加层。官方在 README 提供了 GIF 预览，可以看看是否符合心意。默认配置会在目标窗口左上角显示 FPS、CPU 和 GPU 占用等指标，按 <kbd>RShift</kbd>+<kbd>F12</kbd> 切换隐藏和显示
+它类似于 Windows 上微星小飞机的性能监控叠加层。官方在 README 提供了 GIF 预览，可以看看是否符合心意。默认配置会在目标窗口左上角显示 FPS、CPU 和 GPU 占用等指标，按 <kbd>RShift</kbd>+<kbd>F12</kbd> 切换隐藏和显示，也有其它快捷键控制叠加层位置、数据录制等
 
 要显示的内容、显示样式、位置、快捷键等，都可以在配置文件中自定义，通用的配置文件位于 `~/.config/MangoHud/MangoHud.conf`，也可以为每个应用程序或游戏配置不同的配置文件（[详细信息](https://github.com/flightlessmango/MangoHud#hud-configuration)）。官方提供了[示例配置](https://github.com/flightlessmango/MangoHud/blob/master/data/MangoHud.conf)
 
@@ -462,7 +483,7 @@ Analog I/O (4): -0.00 mV
 >
 > 那就检查一下你的 CPU 是否支持降压、BIOS 是否限制了降压
 >
-> 以我的联想拯救者为例，我的 i9-14900HX 支持降压。在 BIOS 的详细设置中打开「系统设置」选项卡，打开「**拯救者性能调优**」，关闭「**低电压保护**」
+> 以我的联想拯救者为例，我的 i9-14900HX 支持降压。在 BIOS 的详细设置中打开「系统设置」选项卡，打开「**拯救者性能调优**」，关闭「**低电压保护**」（需打开「拯救者性能调优」才会显示「低电压保护」选项）
 
 测试稳定后就可以开启服务使更改永久生效
 

@@ -26,7 +26,23 @@ KDE 系的磁盘占用查看器，以图形化方式显示电脑磁盘使用情�
 
 `GPL-3.0` | [GitHub](https://github.com/Radekyspec/StartLive)
 
-绕过 B 站直播姬获取推流地址
+绕过哔哩哔哩直播姬获取推流地址
+
+### keyd
+
+`MIT` | [GitHub](https://github.com/rvaiya/keyd)
+
+Linux 上的系统级键盘重映射守护进程
+
+非常好地帮我将 Copilot 替换为右 Ctrl。而且在我笔记本的键盘进可乐坏掉一小片区域的那几天帮了我很大忙
+
+### OBS Game Capture
+
+`GPL-2.0-or-later` | [GitHub](https://github.com/nowrep/obs-vkcapture)
+
+高性能低开销地采集 Vulkan/OpenGL 游戏画面给 [OBS Studio](https://github.com/obsproject/obs-studio)
+
+（比 PipeWire 效率高吧，还能捕获 HDR）
 
 ## 系统信息
 
@@ -103,3 +119,23 @@ PipeWire 应用的限幅器、压缩器、卷积器、均衡器、自动音量�
 `GPL-3.0` | [官网](https://www.spek.cc) [GitHub](https://github.com/alexkay/spek)
 
 声学频谱分析仪。经常在视频里看到别人拿它来鉴别音频的 “真假无损”
+
+## 其它
+
+### we-layerd
+
+`Unlicensed` | <span style="color: red;">**非开源**</span> | [GitHub](https://github.com/Aromatic05/we-layerd)
+
+一个 Linux Wayland 原生的 Wallpaper Engine 运行时
+
+基于 Rust 守护进程实现，支持 GNOME 以及 layer-shell 合成器（如 niri、Hyprland 和 KDE Plasma）
+
+## 赤石科技
+
+### CEF Detector
+
+`MIT` | [GitHub](https://github.com/Tobiichi-Origuchi/CefDetector)
+
+喜报！这台电脑上一共有 n 个 Chromium 内核的应用！
+
+> 你说的对，但是《LibCEF》是由谷歌自主研发的一款全新开放浏览器内核。第三方代码运行在在一个被称作「CEF」的浏览器沙盒，在这里，被前端程序员选中的代码将被授予「libcef.so」，导引浏览器之力‌。你将扮演一位名为「电脑用户」的冤种角色，在各种软件的安装中下载类型各异、体积庞大的 CEF 们，被它们一起占用硬盘空间，吃光你的内存——同时，逐步发掘「CEF」的真相

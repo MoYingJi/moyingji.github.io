@@ -72,11 +72,11 @@ Steam Play 使用 Compat Data 作为兼容的 “容器”，Proton 作为一个
 
 啊没错，`pfx` 目录其实就是 Wine Prefix 的结构。现在通常将 Wine Prefix 和 Compat Data 混称，甚至直接建立一个 `pfx -> .` 的符号链接，更模糊了两者，~~所以这已经不重要了，我也混称吧（~~
 
-#### 理论知识 - DirectX 支持
+#### 理论知识 - Direct3D 支持
 
-众所周知，Linux 不支持 DirectX，因此游玩使用 DirectX 的游戏需要**图形指令翻译工具**（简称翻译层）
+众所周知，Linux 不支持 Direct3D，因此游玩使用 Direct3D 的游戏需要**图形指令翻译工具**（简称翻译层）
 
-Wine 默认的 DirectX（DX12 除外）翻译层是 WineD3D，将其翻译为 OpenGL，已经严重落后。现在更推荐的是 [dxvk](https://github.com/doitsujin/dxvk)，可以将 DirectX 8~11 翻译为 Vulkan。Proton 默认使用 dxvk。dxvk 还有一个分支是 [dxvk-gplasync](https://gitlab.com/Ph42oN/dxvk-gplasync)，异步编译着色器以尽可能减少卡顿
+Wine 默认的 Direct3D（D3D12 除外）翻译层是 WineD3D，将其翻译为 OpenGL，已经严重落后。现在更推荐的是 [dxvk](https://github.com/doitsujin/dxvk)，可以将 Direct3D 8~11 翻译为 Vulkan。Proton 默认使用 dxvk。dxvk 还有一个分支是 [dxvk-gplasync](https://gitlab.com/Ph42oN/dxvk-gplasync)，异步编译着色器以尽可能减少卡顿
 
 Wine 默认的 Direct3D 12 翻译层是 vkd3d，将其翻译为 Vulkan。Proton 默认使用的 vkd3d-proton 是 VKD3D 的一个分支，为游戏优化
 

@@ -181,7 +181,7 @@ PROTONPATH="/path/to/proton" WINEPREFIX="/path/to/prefix" umu-run "/path/to/game
 
 由于 X.org 不支持 HDR，因此需要将 Proton 切换到原生 Wayland，设置环境变量 `PROTON_ENABLE_WAYLAND=1` 启用 Proton 的实验性原生 Wayland 驱动，这可能会引发一些问题。然后设置环境变量 `PROTON_ENABLE_HDR=1` 启用 HDR 支持，部分游戏还可能需要 `DXVK_HDR=1`
 
-### NVIDIA DLSS
+### Windows 游戏上的 NVIDIA DLSS
 
 详见
  - [DLSS / Smooth Motion / Reflex — NVIDIA Driver Installation Guide](https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/gaming.html)
@@ -332,6 +332,33 @@ STEAM_COMPAT_DATA_PATH="$HOME/.local/share/Steam/steamapps/compatdata/%AppId%" %
 NVIDIA 驱动会附上一份 README。它应该已经在你电脑里了。你可以通过包管理器查看 NVIDIA 驱动相关的包拥有哪些文件。Arch Linux 的 `extra/nvidia-utils` 在 `/usr/share/doc/nvidia/` 里
 
 当然，也有一份[在线版](https://download.nvidia.com/XFree86/Linux-x86_64/595.71.05/README/)，最好将 URL 中的驱动版本换成你现在的
+
+### NVIDIA DLSS
+
+详见
+ - [DLSS / Smooth Motion / Reflex — NVIDIA Driver Installation Guide](https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/gaming.html)
+
+对于 Windows 游戏，见 [Windows 游戏上的 NVIDIA DLSS](#windows-游戏上的-nvidia-dlss)
+
+#### Smooth Motion
+
+详见
+ - [Smooth Motion — NVIDIA Driver Installation Guide](https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/gaming.html#smooth-motion)
+ - [Chapter 38. NVIDIA Smooth Motion](https://download.nvidia.com/XFree86/Linux-x86_64/610.57.04/README/nvpresent.html)
+
+使用环境变量
+
+```shell
+NVPRESENT_ENABLE_SMOOTH_MOTION=1
+```
+
+#### DLSS 5
+
+> [!IMPORTANT]
+>
+> 内容编写于 2026-09-09，可能有时效性
+
+使用 [DLSS5VKLayer](https://github.com/bmitch87/DLSS5VKLayer)，不过此项目仍在实验阶段
 
 ### NVIDIA GPU 未被使用
 

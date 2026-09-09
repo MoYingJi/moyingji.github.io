@@ -187,7 +187,11 @@ PROTONPATH="/path/to/proton" WINEPREFIX="/path/to/prefix" umu-run "/path/to/game
  - [DLSS / Smooth Motion / Reflex — NVIDIA Driver Installation Guide](https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/gaming.html)
  - [Passing driver settings · jp7677/dxvk-nvapi Wiki](https://github.com/jp7677/dxvk-nvapi/wiki/Passing-driver-settings)
 
-有了 dxvk-nvapi（Proton 9.0 以上内置），大多数功能开箱即用，除了在 Vulkan 上的 NVIDIA Reflex（比如终末地），需要额外的 Vulkan 层，Arch 系用户可以直接安装 [aur/dxvk-nvapi-vkreflex-layer](https://aur.archlinux.org/packages/dxvk-nvapi-vkreflex-layer)（其它发行版可以看[这里](https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/gaming.html#reflex-for-vulkan-steam-play-proton)），然后为游戏设置环境变量 `DXVK_NVAPI_VKREFLEX=1`
+有了 dxvk-nvapi（Proton 9.0 以上内置），大多数功能开箱即用
+
+> [!IMPORTANT]
+>
+> 如果驱动版本在 `615.71.09` 以下，NVIDIA Reflex 还需要额外的 Vulkan 层，Arch 系用户可以直接安装 [aur/dxvk-nvapi-vkreflex-layer](https://aur.archlinux.org/packages/dxvk-nvapi-vkreflex-layer)（其它发行版可以看[这里](https://docs.nvidia.com/datacenter/tesla/driver-installation-guide/gaming.html#reflex-for-vulkan-steam-play-proton)），然后为游戏设置环境变量 `DXVK_NVAPI_VKREFLEX=1`
 
 #### 常见环境变量示例
 

@@ -25,8 +25,9 @@ const Layout = h(DefaultTheme.Layout, null, {
 
 <style lang="sass">
     // 滚动跳转动画
-    html
-        scroll-behavior: smooth
-    html.disable-scroll-transition
-        scroll-behavior: auto
+    @media(prefers-reduced-motion: no-preference)
+        html
+            scroll-behavior: smooth
+        html.disable-scroll-transition
+            scroll-behavior: auto
 </style>

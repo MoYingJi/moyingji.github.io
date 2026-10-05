@@ -94,6 +94,12 @@ Linux 上的系统级键盘重映射守护进程
 兼容 Linux 的米游抽卡记录查询软件（不过是 Electron）
 支持导入导出 UIGF 格式的文件
 
+### Anime Vulkan Anti-Dither
+
+`MIT` | [GitHub](https://github.com/Viemean/anime-vulkan-anti-dither)
+
+二游反虚化 Vulkan 层
+
 ### CEP 终末地规划器
 
 `AGPL-3.0` | **在线网页** | [Web](https://end.canmoe.com) [GitHub](https://github.com/cmyyx/cep)

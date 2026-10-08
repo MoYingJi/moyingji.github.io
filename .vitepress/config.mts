@@ -70,11 +70,12 @@ const config: UserConfig<NoInfer<DefaultTheme.Config>> = {
         outlineTitle: "页面导航",
     },
 
-    lang: "zh-CN",
+    lang: "zh-Hans",
     locales: {
         root: {
-            label: "中文",
-            lang: "zh-CN",
+            label: "简体中文",
+            lang: "zh-Hans",
+            dir: "ltr",
         },
     },
 
@@ -105,11 +106,15 @@ const config: UserConfig<NoInfer<DefaultTheme.Config>> = {
 
         container: {
             tipLabel: "提示",
+            infoLabel: "信息",
             warningLabel: "警告",
             dangerLabel: "危险",
-            infoLabel: "信息",
             detailsLabel: "详细信息",
+            noteLabel: "注意",
+            importantLabel: "重要",
+            cautionLabel: "小心",
         },
+        codeCopyButtonTitle: "复制代码",
     },
 
     vite: {

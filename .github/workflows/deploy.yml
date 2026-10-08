@@ -1,5 +1,12 @@
 name: Deploy VitePress
-on: { push: { branches: ["main"] }, workflow_dispatch: {} }
+
+on:
+  # 在针对 `main` 分支的推送上运行
+  push:
+    branches: [main]
+
+  # 允许你从 Actions 选项卡手动运行此工作流程
+  workflow_dispatch:
 
 # 设置 GITHUB_TOKEN 的权限，以允许部署到 GitHub Pages
 permissions:
@@ -20,25 +27,19 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
-              uses: actions/checkout@v6
+              uses: actions/checkout@v7
               with:
-                fetch-depth: 0
+                fetch-depth: 0 # 如果未启用 lastUpdated，则不需要
 
-            - uses: pnpm/action-setup@v6
+            - name: Setup pnpm with runtime
+              uses: pnpm/setup@v3
               with:
                 version: 11
-
-            - name: Setup Node
-              uses: actions/setup-node@v6
-              with:
-                  node-version: 26
-                  cache: pnpm
+                runtime: node@26
+                cache: true
 
             - name: Setup Pages
               uses: actions/configure-pages@v6
-
-            - name: Install dependencies
-              run: pnpm install
 
             - name: Build with VitePress
               run: pnpm build

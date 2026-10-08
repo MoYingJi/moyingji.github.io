@@ -163,7 +163,7 @@ PROTONPATH="/path/to/proton" WINEPREFIX="/path/to/prefix" umu-run "/path/to/game
 
 大多第三方启动器都默认使用了 UMU 启动游戏
 
-部分游戏会检测它们是否由 Steam 启动。一些社区版 Proton 会根据环境变量 `UMU_USE_STEAM=1` 使用自带的 `steam.exe` 启动游戏，使游戏的父进程为 `steam.exe` 以欺骗游戏
+部分游戏会检测它们是否由 Steam 启动。一些社区版 Proton 会根据环境变量 `UMU_USE_STEAM=1` 使用自带的 `steam.exe` 启动游戏，使游戏的父进程为 `steam.exe` 以欺骗游戏；这个 `steam.exe` 是一个特殊的启动器存根，不会与 Linux 系统中的 Steam 连接（会一并禁用掉用于桥接的 `lsteamclient`）
 
 ### ProtonPlus
 
@@ -208,21 +208,23 @@ PROTON_DLSS_INDICATOR="1"
 DXVK_NVAPI_GPU_ARCH="GB200"
 ```
 
-### Workarounds
+### 其它问题
 
 #### 原神
 
 [为原神开启 HDR](./workarounds/gs-hdr.md)
 
+强制使用 D3D12 (WIP 咕咕咕)
+
 #### 鸣潮
 
 [在 Linux 上运行鸣潮官方启动器](./workarounds/wuwa-launcher.md)
 
+[客户端资源分级引起的无法脱离启动器运行游戏](./workarounds/wuwa-krqlv.md)
+
 #### 米家游戏全局光照闪烁
 
-米家部分游戏（原神、崩铁、绝区零 DX 11）有全局光照的闪烁问题。除崩铁外，均可用 [dxvk-gplasync](https://gitlab.com/Ph42oN/dxvk-gplasync) 解决。崩铁暂时无解，目前只能降低「**光照质量**」（比如从 **非常高** 降低到 **高** 可以缓解一些）
-
-### 其它问题
+米家部分游戏（原神、崩铁、绝区零）在 D3D11 下有全局光照的闪烁问题。除崩铁外，均可用 [dxvk-gplasync](https://gitlab.com/Ph42oN/dxvk-gplasync) 解决。崩铁暂时无解，目前只能降低「**光照质量**」（比如从 **非常高** 降低到 **高** 可以缓解一些）
 
 #### 鼠标光标大小
 

@@ -1,7 +1,9 @@
 {
     "type": "module",
-    "dependencies": {
-        "mitt": "^3.0.1"
+    "scripts": {
+        "dev": "vitepress dev",
+        "build": "vitepress build",
+        "preview": "vitepress preview"
     },
     "devDependencies": {
         "@css-render/vue3-ssr": "^0.15.14",
@@ -17,14 +19,10 @@
         "markdown-it-footnote": "^4.0.0",
         "markdown-it-ins": "^4.0.0",
         "markdown-it-mathjax3": "^5.2.0",
-        "sass": "^1.105.0",
-        "vite": "^8.3.1",
+        "mitt": "^3.0.1",
+        "sass": "^1.105.1",
+        "vite": "^8.3.3",
         "vitepress": "2.0.0-alpha.18",
         "vue": "^3.5.43"
-    },
-    "scripts": {
-        "dev": "vitepress dev",
-        "build": "vitepress build",
-        "preview": "vitepress preview"
     }
 }

@@ -837,8 +837,8 @@ packages:
   markdown-it-mathjax3@5.2.0:
     resolution: {integrity: sha512-R+XAy5/7vSGuhG9Z0/cJm6zKxOzStcScfSKVwoarh4nBra+v1KClvbALr/xFTEe9iQhwfQM4SJnO68LXL+btMA==}
 
-  markdown-it@14.3.2:
-    resolution: {integrity: sha512-sHHjZ5fJKlgrG4qns2YwVcdNep35h5fERrfkD2YNsb9UFk0UIHarbiTaHKVMlPuWAoiilyK8Fv/jAm11slsY7Q==}
+  markdown-it@14.3.3:
+    resolution: {integrity: sha512-L//tDAkjTjJCU6pBUSBTgs3Kg4InVaZuUZog/b6V12UKhcDQ7S78877ibbCanRExwPuYP1CZD7Gd2dxSy1GXRg==}
     hasBin: true
 
   mathxyjax3@0.8.3:
@@ -1161,9 +1161,9 @@ snapshots:
 
   '@jridgewell/sourcemap-codec@1.6.0': {}
 
-  '@nolebase/markdown-it-element-transform@2.18.2(markdown-it@14.3.2)':
+  '@nolebase/markdown-it-element-transform@2.18.2(markdown-it@14.3.3)':
     dependencies:
-      markdown-it: 14.3.2
+      markdown-it: 14.3.3
 
   '@nolebase/ui@2.18.2(vitepress@2.0.0-alpha.18(less@4.9.1)(markdown-it-mathjax3@5.2.0)(postcss@8.5.29)(sass@1.105.1))(vue@3.5.43)':
     dependencies:
@@ -1204,11 +1204,11 @@ snapshots:
       '@iconify-json/icon-park-outline': 1.2.4
       '@iconify-json/octicon': 1.2.37
       '@iconify-json/svg-spinners': 1.2.4
-      '@nolebase/markdown-it-element-transform': 2.18.2(markdown-it@14.3.2)
+      '@nolebase/markdown-it-element-transform': 2.18.2(markdown-it@14.3.3)
       '@nolebase/ui': 2.18.2(vitepress@2.0.0-alpha.18(less@4.9.1)(markdown-it-mathjax3@5.2.0)(postcss@8.5.29)(sass@1.105.1))(vue@3.5.43)
       less: 4.9.1
-      markdown-it: 14.3.2
-      markdown-it-attrs: 4.5.0(markdown-it@14.3.2)
+      markdown-it: 14.3.3
+      markdown-it-attrs: 4.5.0(markdown-it@14.3.3)
       vitepress: 2.0.0-alpha.18(less@4.9.1)(markdown-it-mathjax3@5.2.0)(postcss@8.5.29)(sass@1.105.1)
     transitivePeerDependencies:
       - supports-color
@@ -1767,9 +1767,9 @@ snapshots:
 
   mark.js@8.11.1: {}
 
-  markdown-it-attrs@4.5.0(markdown-it@14.3.2):
+  markdown-it-attrs@4.5.0(markdown-it@14.3.3):
     dependencies:
-      markdown-it: 14.3.2
+      markdown-it: 14.3.3
 
   markdown-it-footnote@4.0.0: {}
 
@@ -1780,7 +1780,7 @@ snapshots:
       '@se-oss/deasync': 1.0.1
       mathxyjax3: 0.8.3
 
-  markdown-it@14.3.2:
+  markdown-it@14.3.3:
     dependencies:
       argparse: 2.0.1
       entities: 4.5.0
